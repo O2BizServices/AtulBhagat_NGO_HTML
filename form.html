@@ -2,6 +2,7 @@
 <html>
 <head>
 <script src="https://vikrant3d.github.io/ShyamGym/vendor/jquery/jquery.js" ></script>
+
 <style>
 .dropbtn {
   background-color: #4CAF50;
@@ -94,8 +95,10 @@ alert("aaa");
 <!DOCTYPE html>
 <html>
 <head>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.8/dist/sweetalert2.all.min.js"></script>
+<script src="js/location.js" ></script>
     <!-- Required meta tags-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -184,7 +187,7 @@ alert("aaa");
                         <div class="input-group">
                             <label class="label">District</label>
                             <div class="rs-select2 js-select-simple select--search">
-                                <select name="district" onchange="GetSelectedDistrictTalukas(this)">
+                                <select name="district" id="district" onchange="getSelectedDistrictTalukas()">
                                     <option selected="selected" value = "-1">Choose District</option>
                                     <option value ="233">Raigad</option>
                                     <option value="239">Thane</option>
@@ -195,7 +198,7 @@ alert("aaa");
 						<div class="input-group">
                             <label class="label">Taluka</label>
                             <div class="rs-select2 js-select-simple select--search">
-                                <select id="talukaId" name="taluka">
+                                <select id="talukaId" name="taluka" onchange="getSelectedTalukasVillage()">
                                     <option selected="selected" value = "-1">Choose Taluka</option>
                                 </select>
                                 <div class="select-dropdown"></div>
@@ -273,18 +276,26 @@ alert("aaa");
 		return false;
 	  }
 	}
-	function GetSelectedDistrictTalukas(district) {
-        //var selectedText = district.options[district.selectedIndex].innerHTML;
-        var selectedDistrict = district.value;
-		var api ="https://www.mapsofindia.com/villages/data.php?state=22&district=" + selectedDistrict;
-		httpGet(api);
+	function getSelectedDistrictTalukas() {
+		$('#talukaId').empty();
+        var data = talukaMap[$("#district").val()];
+		$.each(data, function(key, value) {   
+				 $('#talukaId')
+					 .append($("<option></option>")
+								.attr("value", key)
+								.text(value)); 
+			});		
     }
-	function GetSelectedTalukasVillage(taluka) {
-        //var selectedText = district.options[district.selectedIndex].innerHTML;
-		let selectedDistrict = document.forms["myForm"]["district"].value;
-		var selctedTaluka = taluka.value;
-		var api ="https://www.mapsofindia.com/villages/data.php?state=22&district=" + selectedDistrict + "&tehsil=" + selctedTaluka;
-		httpGet(api);
+	
+	function getSelectedTalukasVillage() {
+       $('#postId').empty();
+        var data = postMap[$("#talukaId").val()];
+		$.each(data, function(key, value) {   
+				 $('#postId')
+					 .append($("<option></option>")
+								.attr("value", key)
+								.text(value)); 
+			});		
     }
 	
 	function httpGet(api){
