@@ -1,192 +1,143 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <script src="https://o2bizservices.com/assets/vendor/jquery/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.8/dist/sweetalert2.all.min.js"></script>
-
 <script src="js/location.js" ></script>
-
-
-    <!-- Required meta tags-->
+	<!-- Required meta tags-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Colorlib Templates">
-    <meta name="author" content="Colorlib">
-    <meta name="keywords" content="Colorlib Templates">
-
     <!-- Title Page-->
-    <title>Au Register Forms by Colorlib</title>
-	 <!-- Bootsrap -->
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-
-        <!-- Template main Css -->
-        <link rel="stylesheet" href="assets/css/style.css">
-        
-        <!-- Modernizr -->
-        <script src="assets/js/modernizr-2.6.2.min.js"></script>
+    <title>Registration Form</title>
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/modernizr-2.6.2.min.js"></script>
+	
 
     <!-- Icons font CSS-->
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
     <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <!-- Font special for pages-->
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
     <!-- Vendor CSS-->
     <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
     <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
-
     <!-- Main CSS-->
     <link href="css/main.css" rel="stylesheet" media="all">
 </head>
-
-
 <body>
  <header class="main-header">
-        
-    
         <nav class="navbar navbar-static-top">
-
             <div class="navbar-top">
-
               <div class="container">
                   <div class="row">
-
                     <div class="col-sm-6 col-xs-12">
-
                         <ul class="list-unstyled list-inline header-contact">
                             <li> <i class="fa fa-phone"></i> <a href="tel:">+212 658 986 213 </a> </li>
                              <li> <i class="fa fa-envelope"></i> <a href="mailto:contact@sadaka.org">contact@sadaka.org</a> </li>
                        </ul> <!-- /.header-contact  -->
                       
                     </div>
-
                     <div class="col-sm-6 col-xs-12 text-right">
-
                         <ul class="list-unstyled list-inline header-social">
-
                             <li> <a href="#"> <i class="fa fa-facebook"></i> </a> </li>
                             <li> <a href="#"> <i class="fa fa-twitter"></i>  </a> </li>
                             <li> <a href="#"> <i class="fa fa-google"></i>  </a> </li>
                             <li> <a href="#"> <i class="fa fa-youtube"></i>  </a> </li>
-                       </ul> <!-- /.header-social  -->
-                      
+                       </ul> <!-- /.header-social  -->                      
                     </div>
-
-
                   </div>
               </div>
-
             </div>
-
-            <div class="navbar-main">
-              
+            <div class="navbar-main">              
               <div class="container">
-
                 <div class="navbar-header">
                   <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-
-                  </button>
-                  
-                  <a class="navbar-brand" href="index.html"><img src="assets/images/sadaka-logo.png" alt=""></a>
-                  
+                  </button>                  
+                  <a class="navbar-brand" href="index.html"><img src="assets/images/sadaka-logo.png" alt=""></a>                  
                 </div>
-
                 <div id="navbar" class="navbar-collapse collapse pull-right">
-
                   <ul class="nav navbar-nav">
-
                     <li><a  href="index.html">HOME</a></li>
                     <li><a href="about.html">ABOUT</a></li>
                     <li class="has-child"><a href="#">CAUSES</a>
-
                       <ul class="submenu">
                          <li class="submenu-item"><a href="causes.html">Causes list </a></li>
                          <li class="submenu-item"><a href="causes-single.html">Single cause </a></li>
                          <li class="submenu-item"><a href="causes-single.html">Single cause </a></li>
                          <li class="submenu-item"><a href="causes-single.html">Single cause </a></li>
                       </ul>
-
                     </li>
                     <li><a href="gallery.html">GALLERY</a></li>
                     <li><a href="contact.html">CONTACT</a></li><li>
 					<li><a class="is-active" href="form.html">REGISTRATION</a></li>
-
                   </ul>
-
                 </div> <!-- /#navbar -->
-
-              </div> <!-- /.container -->
-              
+              </div> <!-- /.container -->              
             </div> <!-- /.navbar-main -->
-
-
         </nav> 
-
-    </header> <!-- /. main-header -->
-	
+    </header> <!-- /. main-header -->	
     <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
         <div class="wrapper wrapper--w680">
             <div class="card card-4">
                 <div class="card-body">
                     <!--<h2 class="title">Registration Form</h2>-->
-                    <form name="myForm" onsubmit="return validateForm()">
-                        <div class="row row-space">
-                            <div class="col-2">
+                    <form name="myForm">
+                        <div class="input-group">
+                            <div class="col-12">
                                 <div class="input-group">
                                     <label class="label">first name</label>
-                                    <input class="input--style-4" type="text" name="first_name">
+                                    <input class="input--style-4" type="text" id="first_name">
                                 </div>
                             </div>
-                            <div class="col-2">
+                            <div class="col-12">
                                 <div class="input-group">
                                     <label class="label">last name</label>
-                                    <input class="input--style-4" type="text" name="last_name">
+                                    <input class="input--style-4" type="text" id="last_name">
                                 </div>
                             </div>
                         </div>
-                        <div class="row row-space">
-                            <div class="col-2">
+                        <div class="input-group">
+                            <div class="col-12">
                                 <div class="input-group">
                                     <label class="label">birth date</label>
                                     <div class="input-group-icon">
-                                        <input class="input--style-4 js-datepicker" type="text" name="birthdate"
+                                        <input class="input--style-4 js-datepicker" type="text" id="birthdate"
                                         <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-2">
+                            <div class="col-12">
                                 <div class="input-group">
                                     <label class="label">Gender</label>
                                     <div class="p-t-10">
                                         <label class="radio-container m-r-45">Male
-                                            <input type="radio" checked="checked" name="gender">
+                                            <input type="radio"  name="gender" value="Male">
                                             <span class="checkmark"></span>
                                         </label>
                                         <label class="radio-container">Female
-                                            <input type="radio" name="gender">
+                                            <input type="radio" name="gender" value="Female">
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row row-space">
-                            <div class="col-2">
+                        <div class="input-group">
+                            <div class="col-12">
                                 <div class="input-group">
                                     <label class="label">Email</label>
-                                    <input class="input--style-4" type="email" name="email">
+                                    <input class="input--style-4" type="email" id="email">
                                 </div>
                             </div>
-                            <div class="col-2">
+                            <div class="col-12">
                                 <div class="input-group">
-                                    <label class="label">Phone Number</label>
-                                    <input class="input--style-4" type="text" name="phone">
+                                    <label class="label">Mobile Number</label>
+                                    <input class="input--style-4" type="text" id="mobile">
                                 </div>
                             </div>
                         </div>
@@ -211,26 +162,31 @@
                             </div>
                         </div>
 						<div class="input-group"style="width: 100%">
-                            <label class="label">Post</label>
+                            <label class="label">Postal</label>
                             <div class="rs-select2 js-select-simple select--search">
                                 <select id="postId" name="post">
-                                    <option selected="selected" value = "-1">Choose Post</option>
+                                    <option selected="selected" value = "-1">Choose Postal</option>
                                 </select>
                                 <div class="select-dropdown"></div>
                             </div>
                         </div>
-						<input type="file" name="fileToUpload" id="fileToUpload" style="padding-bottom: 20px;padding-top: 20px;">
+						<input type="file" name="fileToUpload" onchange="encodeImgtoBase64(this)" id="fileToUpload" style="padding-bottom: 20px;padding-top: 20px;">
                         <div class="p-t-15">
-                            <button class="btn btn--radius-2 btn--blue" type="submit">Submit</button>
-                        </div>
-						 
+                           <input type="button" onClick="return submitData(this)" class="btn btn--radius-2 btn--blue" value="Submit Registration" />
+                        </div>						 
                     </form>
                 </div>
             </div>
         </div>
     </div>
     <!-- Jquery JS-->
-    <script src="vendor/jquery/jquery.min.js"></script>
+   <script src="assets/js/bootstrap.min.js"></script>
+
+  <!-- owl carouseljavascript file -->
+  <script src="assets/js/owl.carousel.min.js"></script>
+
+  <!-- Template main javascript -->
+  <script src="assets/js/main.js"></script>
     <!-- Vendor JS-->
     <script src="vendor/select2/select2.min.js"></script>
     <script src="vendor/datepicker/moment.min.js"></script>
@@ -238,15 +194,23 @@
     <!-- Main JS-->
     <script src="js/global.js"></script>
 	<script>
-	var stateList = ['Andaman and Nicobar Islands', 'Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chandigarh', 'Chhattisgarh', 'Dadra and Nagar Haveli', 'Daman Diu', 'Delhi', 'Goa', 'Gujarat', 'Haryana', 'Himachal Pradesh', 'Jammu and Kashmir', 'Jharkhand', 'Karnataka', 'Kerala', 'Lakshadweep', 'Madhya Pradesh', 'Maharashtra', 'Manipur', 'Meghalaya', 'Mizoram', 'Nagaland', 'Orissa', 'Pondicherry', 'Punjab', 'Rajasthan', 'Sikkim', 'Tamil Nadu', 'Telangana', 'Tripura', 'Uttar Pradesh', 'Uttarakhand', 'West Bengal'];
-	$(stateList).each(function(){
-	$("#stateid").append(new Option(this.toString(), this.toString()));
-	});
-	function validateForm() {
+	var filename="",filecontent="";
+	var contextPath="https://36n00y4czc.execute-api.ap-northeast-1.amazonaws.com/dev/api/v1/";
+	function encodeImgtoBase64(element) {
+      var file = element.files[0];
+	  var reader = new FileReader();
+	  filename = file.name;
+      reader.onload = function(readerEvt) {
+            var binaryString = readerEvt.target.result;
+			filecontent=btoa(binaryString);
+        };
+        reader.readAsBinaryString(file);     
+    }
+	function submitData(obj) {
 	  let first_name = document.forms["myForm"]["first_name"].value;
 	  let birth_date = document.forms["myForm"]["birthdate"].value;
 	  let email = document.forms["myForm"]["email"].value;
-	  let phone = document.forms["myForm"]["phone"].value;
+	  let phone = document.forms["myForm"]["mobile"].value;
 	  let district = document.forms["myForm"]["district"].value;
 	  let taluka = document.forms["myForm"]["taluka"].value;
 	  var phoneNumberRegEx = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
@@ -281,45 +245,73 @@
 		showAlert("Select taluka ⚠️");
 		return false;
 	  }
+	  if(filename == ""){
+		showAlert("Please Upload Document");
+		return false;
+	  }
+	  if($("input[name='gender']:checked").val() == undefined){
+		showAlert("Please Select Gender");
+		return false;
+	  }
+	  $(obj).attr('value','Please wait...').prop('disabled',true);
+	  
+	  var map={};
+	  map["firstname"]=$("#first_name").val();
+	  map["lastname"]=$("#last_name").val();
+	  map["dob"]=$("#birthdate").val();
+	  map["email"]=$("#email").val();
+	  map["mobile"]=$("#mobile").val();
+	  map["district"]=$("#district :selected").html();
+	  map["taluka"]=$("#talukaId :selected").html();
+	  map["post"]=$("#postId :selected").html();
+	  map["gender"]=$("input[name='gender']:checked").val();
+	  map["docname"]=filename;
+	  map["filecontent"]=filecontent;
+	  $.ajax({
+		  type: 'POST',
+		  data:JSON.stringify(map),	
+		  url: contextPath +"saveRegistration",
+		  complete: function (response1) {
+					$(obj).attr('value','Submit Registration').prop('disabled',false);
+					showAlert(response1.responseJSON);
+					if(response1.status == 200){						
+						clearForm();
+					}					
+				},		  		
+			});	  
 	}
+	
+	function clearForm(){
+		 $("#first_name").val("");
+		 $("#last_name").val("");
+		 $("#birthdate").val("");
+		 $("#email").val("");
+		 $("#mobile").val("");
+		 $("#district").val("-1").change();
+		 $("#talukaId").val("-1").change();
+		 $("#postId").val("-1").change();
+		 $("#fileToUpload").val("");
+		 filename="";
+		 filecontent="";
+	}
+	
 	function getSelectedDistrictTalukas() {
 		$('#talukaId').empty();
-        var data = talukaMap[$("#district").val()];
+		$('#talukaId').append($("<option></option>").attr("value", "-1").text("Choose Taluka")); 
+		var data = talukaMap[$("#district").val()];
 		$.each(data, function(key, value) {   
-				 $('#talukaId')
-					 .append($("<option></option>")
-								.attr("value", key)
-								.text(value)); 
-			});		
+			$('#talukaId').append($("<option></option>").attr("value", key).text(value)); 
+		});		
     }
 	
 	function getSelectedTalukasVillage() {
-       $('#postId').empty();
+        $('#postId').empty();
+	    $(postId).append($("<option></option>").attr("value", "-1").text("Choose Postal")); 
         var data = postMap[$("#talukaId").val()];
 		$.each(data, function(key, value) {   
-				 $('#postId')
-					 .append($("<option></option>")
-								.attr("value", key)
-								.text(value)); 
-			});		
+			$('#postId').append($("<option></option>").attr("value", key).text(value)); 
+		});		
     }
-	
-	function httpGet(api){
-	$.ajax({
-			type: 'GET',
-			url: api,
-		//  data: data,
-			success: function (response1) {
-			alert(response1);
-			},
-			//dataType: dataType
-		});
-        //$.get(api, function( data ) {
-		  //alert( "Data Loaded: " );
-		//});
-	}
-	</script>
-	<script>
 	function showAlert(msg){
         Swal.fire({
 		  text: msg,
@@ -330,9 +322,8 @@
 		  // Background color of the "Cancel"-button. The default color is #aaa
 		  cancelButtonColor: 'Crimson',
 		  confirmButtonText: 'OK'
-	})
+		})
 	}
 	</script>
 </body>
-
 </html>
