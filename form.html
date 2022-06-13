@@ -82,10 +82,14 @@
         </nav> 
     </header> <!-- /. main-header -->	
     <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
-        <div class="wrapper wrapper--w680">
+		<div class="wrapper wrapper--w680">
+			<div align="center" style="margin-bottom:15px">
+				<img src="assets/images/reg-logo.png" />
+			</div>
             <div class="card card-4">
                 <div class="card-body">
-                    <!--<h2 class="title">Registration Form</h2>-->
+                    <h4 style="margin-left: -31px;">Personal Details</h4>
+					<hr style="margin-bottom: 18px;margin-left: -31px;">
                     <form name="myForm">
                         <div class="input-group">
                             <div class="col-12">
@@ -141,6 +145,8 @@
                                 </div>
                             </div>
                         </div>
+						<h4 style="margin-left: -31px;">Address Details</h4>
+						<hr style="margin-bottom: 18px;margin-left: -31px;">
                         <div class="input-group" style="width: 100%">
                             <label class="label">District</label>
                             <div class="rs-select2 js-select-simple select--search">
@@ -170,7 +176,63 @@
                                 <div class="select-dropdown"></div>
                             </div>
                         </div>
+						<h4 style="margin-left: -31px;">Education Details</h4>
+						<hr style="margin-bottom: 18px;margin-left: -31px;">
+						<div class="input-group"style="width: 100%">
+                            <label class="label">Education</label>
+                            <div class="rs-select2 js-select-simple select--search">
+                                <select id="education">
+                                    <option selected="selected" value="-1">Choose Education</option>
+									<option value="Below 10th">Below 10th</option>
+									<option value="10th">10th</option>
+									<option value="12th">12th</option>
+									<option value="Diploma">Diploma</option>
+									<option value="Graduation">Graduation</option>
+									<option value="Post-Graduation">Post-Graduation</option>
+                                </select>
+                                <div class="select-dropdown"></div>
+                            </div>
+                        </div>
+						<div class="input-group"style="width: 100%">
+                            <label class="label">Education Stream</label>
+                            <div class="rs-select2 js-select-simple select--search">
+                                <select id="stream">
+                                    <option selected="selected" value="-1">Choose Stream</option>
+									<option value="Arts">Arts</option>
+									<option value="Commerce">Commerce</option>
+									<option value="Science">Science</option>
+									<option value="Other">Other</option>
+                                </select>
+                                <div class="select-dropdown"></div>
+                            </div>
+                        </div>
+						<div class="input-group"style="width: 100%">
+                            <label class="label">Year of Passing</label>
+                            <div class="rs-select2 js-select-simple select--search">
+                                <select id="yearofpass">
+                                    <option selected="selected" value="-1">Choose Year</option>
+							    </select>
+                                <div class="select-dropdown"></div>
+                            </div>
+                        </div>
+						<div class="input-group"style="width: 100%">
+                            <label class="label">Percentage/CGPA</label>
+                            <div class="rs-select2 js-select-simple select--search">
+                                <input class="input--style-4" type="text" id="percentage">
+                            </div>
+                        </div>
+						<div class="input-group">
+                            <div class="col-12">
+                                <div class="input-group">
+                                    <label class="label">Other Details (if any)</label>
+                                    <textarea id="otherdetails" class="input--style-4" style="width:100%"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-group"style="width: 100%">
+						 <label class="label">Upload Resume</label>
 						<input type="file" name="fileToUpload" onchange="encodeImgtoBase64(this)" id="fileToUpload" style="padding-bottom: 20px;padding-top: 20px;">
+						</div>
                         <div class="p-t-15">
                            <input type="button" onClick="return submitData(this)" class="btn btn--radius-2 btn--blue" value="Submit Registration" />
                         </div>						 
@@ -194,6 +256,9 @@
     <!-- Main JS-->
     <script src="js/global.js"></script>
 	<script>
+	for(i=2000;i<=2023;i++){
+		$('#yearofpass').append($("<option></option>").attr("value", i).text(i)); 
+	}
 	var filename="",filecontent="";
 	var contextPath="https://36n00y4czc.execute-api.ap-northeast-1.amazonaws.com/dev/api/v1/";
 	function encodeImgtoBase64(element) {
@@ -213,6 +278,7 @@
 	  let phone = document.forms["myForm"]["mobile"].value;
 	  let district = document.forms["myForm"]["district"].value;
 	  let taluka = document.forms["myForm"]["taluka"].value;
+	  let post = document.forms["myForm"]["post"].value;
 	  var phoneNumberRegEx = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
 	  var gmailRegEx = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 	  if (first_name == "") {
@@ -245,6 +311,10 @@
 		showAlert("Select taluka ⚠️");
 		return false;
 	  }
+	   if(post =="-1"){
+		showAlert("Select post ⚠️");
+		return false;
+	  }
 	  if(filename == ""){
 		showAlert("Please Upload Document");
 		return false;
@@ -253,8 +323,19 @@
 		showAlert("Please Select Gender");
 		return false;
 	  }
-	  $(obj).attr('value','Please wait...').prop('disabled',true);
-	  
+	  if($("#education").val() == "-1"){
+		showAlert("Please Select Education");
+		return false;
+	  }
+	   if($("#education").val() == "-1"){
+		showAlert("Please Select Education");
+		return false;
+	  }
+	  if($("#percentage").val() == "") {
+		showAlert("Enter your CGPA/Percentage");
+		return false;
+	  }
+	  $(obj).attr('value','Please wait...').prop('disabled',true);	  
 	  var map={};
 	  map["firstname"]=$("#first_name").val();
 	  map["lastname"]=$("#last_name").val();
@@ -267,6 +348,11 @@
 	  map["gender"]=$("input[name='gender']:checked").val();
 	  map["docname"]=filename;
 	  map["filecontent"]=filecontent;
+	  map["education"]=$("#education :selected").html();
+	  map["stream"]=$("#stream :selected").html();
+	  map["otherdetails"]=$("#otherdetails").val();
+	  map["yearOfPass"]=$("#yearofpass :selected").html();
+	  map["percentage"]=$("#percentage").val();
 	  $.ajax({
 		  type: 'POST',
 		  data:JSON.stringify(map),	
@@ -293,6 +379,11 @@
 		 $("#fileToUpload").val("");
 		 filename="";
 		 filecontent="";
+		 $("#education").val("-1").change();
+		 $("#stream").val("-1").change();
+	     $("#otherdetails").val("");
+	     $("#yearofpass").val("-1").change();
+	     $("#percentage").val("");
 	}
 	
 	function getSelectedDistrictTalukas() {

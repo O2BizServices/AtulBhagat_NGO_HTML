@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://o2bizservices.com/assets/vendor/jquery/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.8/dist/sweetalert2.all.min.js"></script>
+<script src="../js/location.js" ></script>
+	<!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Title Page-->
+    <title>Registration Form</title>
+	<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../assets/css/style.css">
+    <script src="../assets/js/modernizr-2.6.2.min.js"></script>
+	
+
+    <!-- Icons font CSS-->
+    <link href="../vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="../vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <!-- Vendor CSS-->
+    <link href="../vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="../vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+    <!-- Main CSS-->
+    <link href="../css/main.css" rel="stylesheet" media="all">
+</head>
+<body>
+ <header class="main-header">
+        <nav class="navbar navbar-static-top">
+            <div class="navbar-top">
+              <div class="container">
+                  <div class="row">
+                    <div class="col-sm-6 col-xs-12">
+                        <ul class="list-unstyled list-inline header-contact">
+                            <li> <i class="fa fa-phone"></i> <a href="tel:">+212 658 986 213 </a> </li>
+                             <li> <i class="fa fa-envelope"></i> <a href="mailto:contact@sadaka.org">contact@sadaka.org</a> </li>
+                       </ul> <!-- /.header-contact  -->
+                      
+                    </div>
+                    <div class="col-sm-6 col-xs-12 text-right">
+                        <ul class="list-unstyled list-inline header-social">
+                            <li> <a href="#"> <i class="fa fa-facebook"></i> </a> </li>
+                            <li> <a href="#"> <i class="fa fa-twitter"></i>  </a> </li>
+                            <li> <a href="#"> <i class="fa fa-google"></i>  </a> </li>
+                            <li> <a href="#"> <i class="fa fa-youtube"></i>  </a> </li>
+                       </ul> <!-- /.header-social  -->                      
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <div class="navbar-main">              
+              <div class="container">
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>                  
+                  <a class="navbar-brand" href="index.html"><img src="assets/images/sadaka-logo.png" alt=""></a>                  
+                </div>
+                <div id="navbar" class="navbar-collapse collapse pull-right">
+                  <ul class="nav navbar-nav">
+                    <li><a  href="index.html">HOME</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li class="has-child"><a href="#">CAUSES</a>
+                      <ul class="submenu">
+                         <li class="submenu-item"><a href="causes.html">Causes list </a></li>
+                         <li class="submenu-item"><a href="causes-single.html">Single cause </a></li>
+                         <li class="submenu-item"><a href="causes-single.html">Single cause </a></li>
+                         <li class="submenu-item"><a href="causes-single.html">Single cause </a></li>
+                      </ul>
+                    </li>
+                    <li><a href="gallery.html">GALLERY</a></li>
+                    <li><a href="contact.html">CONTACT</a></li><li>
+					<li><a class="is-active" href="form.html">REGISTRATION</a></li>
+                  </ul>
+                </div> <!-- /#navbar -->
+              </div> <!-- /.container -->              
+            </div> <!-- /.navbar-main -->
+        </nav> 
+    </header> <!-- /. main-header -->	
+   <div class="container">
+     <div class="row">
+		<div class="col-lg-12 table-responsive">
+			<div class="panel panel-default">
+					<div class="panel-heading">
+						All Customer Details
+					</div>
+					<!-- /.panel-heading -->
+					<div class="panel-body"> 
+						<div id="searchBoxPosition" style="float:right"></div>	  
+						  <table class="table table-striped table-bordered table-hover" id="custDetailsTable">
+						  <thead> 
+							<th>Sr No.</th>
+							<th>FullName</th>
+							<th>Mobile No</th>
+							<th>Gender</th>
+							<th>Education</th>
+							<th>Stream</th>
+							<th>%/CGPA</th>
+							<th>Details</th>
+							<th>DownloadResume</th>
+							</thead> 
+							<tbody>	
+							</tbody>		
+						</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+    <!-- Jquery JS-->
+   <script src="../assets/js/bootstrap.min.js"></script>
+
+  <!-- owl carouseljavascript file -->
+  <script src="../assets/js/owl.carousel.min.js"></script>
+
+  <!-- Template main javascript -->
+  <script src="../assets/js/main.js"></script>
+    <!-- Vendor JS-->
+    <script src="../vendor/select2/select2.min.js"></script>
+    <script src="../vendor/datepicker/moment.min.js"></script>
+    <script src="../vendor/datepicker/daterangepicker.js"></script>
+    <!-- Main JS-->
+    <script src="../js/global.js"></script>
+	<script>
+	var contextPath="https://36n00y4czc.execute-api.ap-northeast-1.amazonaws.com/dev/api/v1/";
+	loadData();
+	function loadData(){
+	 $.ajax({
+		  type: 'POST',
+		  url: contextPath +"getAllRegistrationDetails",
+		  complete: function (response1) {
+					if(response1.status == 200){						
+						generateTable(response1.responseJSON);
+					}					
+				},		  		
+			});	  
+	
+	}	
+	function generateTable(response1){
+		var count=1;
+		$.each(response1, function(key,response) {	
+			var newRow = "<tr><td>"+count+"</td><td>"+$(response).attr("firstname")+" "+$(response).attr("lastname")+"</td><td>"+$(response).attr("mobileno")+"</td>"+
+				"<td>"+$(response).attr("gender")+"</td><td>"+$(response).attr("education")+"</td><td>"+$(response).attr("stream")+"</td><td>"+$(response).attr("percentage")+"</td><td>"+$(response).attr("otherdetails")+"</td>"+
+				'<td class="center"><a href="javascript:void(0)" data-mobile="'+$(response).attr("mobileno")+'" data-docname="'+$(response).attr("attachDocName")+'" onclick="return downloadResume(this)">'+$(response).attr("attachDocName")+'</a></td>'+
+				'</tr>';
+			$("#custDetailsTable tbody").append(newRow);
+			count++;		
+		 });
+	}
+	
+	function downloadResume(obj){
+	 var map={};
+	  map["mobile"]=$(obj).attr("data-mobile");
+	  map["docName"]=$(obj).attr("data-docname");	 
+		$.ajax({
+		  type: 'POST',
+		  data:JSON.stringify(map),	
+		  url: contextPath +"downloadResume",
+		  complete: function (response1) {
+					if(response1.status == 200){						
+						var linkSource = 'data:application/octet-stream;base64,' + response1.responseJSON;
+						const downloadLink = document.createElement('a');
+						document.body.appendChild(downloadLink);
+						downloadLink.href = linkSource;
+						downloadLink.target = '_self';
+						downloadLink.download = $(obj).attr("data-docname");
+						downloadLink.click(); 
+					}					
+				},		  		
+			});	  
+	}
+	
+	</script>
+</body>
+</html>
