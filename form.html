@@ -63,15 +63,15 @@
                                 </div>
                             </div>
                             <div class="col-12">
-                                <div class="input-group">
+                                <div class="input-group" id="genderfield">
                                     <label class="label">Gender</label>
                                     <div class="p-t-10">
                                         <label class="radio-container m-r-45">Male
-                                            <input type="radio"  name="gender" value="Male">
+                                            <input type="radio"  name="gender" value="Male" onClick="removeError1(this)">
                                             <span class="checkmark"></span>
                                         </label>
                                         <label class="radio-container">Female
-                                            <input type="radio" name="gender" value="Female">
+                                            <input type="radio" name="gender" value="Female" onClick="removeError1(this)">
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
@@ -116,7 +116,7 @@
                         </div>
 						<div class="input-group"style="width: 100%">
                             <label class="label">Postal</label>
-                            <div class="rs-select2 js-select-simple select--search">
+                            <div class="rs-select2 js-select-simple select--search" onchange="removeError1(this)">
                                 <select id="postId" name="post">
                                     <option selected="selected" value = "-1">Choose Postal</option>
                                 </select>
@@ -128,7 +128,7 @@
 						<div class="input-group"style="width: 100%">
                             <label class="label">Education</label>
                             <div class="rs-select2 js-select-simple select--search">
-                                <select id="education">
+                                <select id="education" onchange="removeError1(this)">
                                     <option selected="selected" value="-1">Choose Education</option>
 									<option value="Below 10th">Below 10th</option>
 									<option value="10th">10th</option>
@@ -143,7 +143,7 @@
 						<div class="input-group"style="width: 100%">
                             <label class="label">Education Stream</label>
                             <div class="rs-select2 js-select-simple select--search">
-                                <select id="stream">
+                                <select id="stream"  onchange="removeError1(this)">
                                     <option selected="selected" value="-1">Choose Stream</option>
 									<option value="Arts">Arts</option>
 									<option value="Commerce">Commerce</option>
@@ -156,7 +156,7 @@
 						<div class="input-group"style="width: 100%">
                             <label class="label">Year of Passing</label>
                             <div class="rs-select2 js-select-simple select--search">
-                                <select id="yearofpass">
+                                <select id="yearofpass"  onchange="removeError1(this)">
                                     <option selected="selected" value="-1">Choose Year</option>
 							    </select>
                                 <div class="select-dropdown"></div>
@@ -208,6 +208,18 @@
 	for(i=2000;i<=2023;i++){
 		$('#yearofpass').append($("<option></option>").attr("value", i).text(i)); 
 	}
+	$(document).ready( function() {
+		$("input").keyup(function(){
+			if ($(this).val()!="") {
+				removeError($(this));
+			} 
+		});
+		$("#birthdate").click(function(){
+			if ($(this).val()!="") {
+				removeError($(this));
+			} 
+		});
+	});
 	var filename="",filecontent="";
 	var contextPath="https://36n00y4czc.execute-api.ap-northeast-1.amazonaws.com/dev/api/v1/";
 	function encodeImgtoBase64(element) {
@@ -217,6 +229,7 @@
       reader.onload = function(readerEvt) {
             var binaryString = readerEvt.target.result;
 			filecontent=btoa(binaryString);
+			removeError($("#fileToUpload"));
         };
         reader.readAsBinaryString(file);     
     }
@@ -231,53 +244,58 @@
 	  var phoneNumberRegEx = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
 	  var gmailRegEx = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 	  if (first_name == "") {
-		showAlert("Enter your first name ⚠️");
+		addError($("#first_name"));
 		return false;
 	  }
 	   if (birth_date == "") {
-		showAlert("Select date of birth ⚠️");
+		addError($("#birthdate"));
+		return false;
+	  }
+	   if($("input[name='gender']:checked").val() == undefined){
+		addError($("#genderfield"));
 		return false;
 	  }
 	   
 	  if (phone == "") {
-		showAlert("Enter your phone number ⚠️");
+		addError($("#mobile"));
 		return false;
 	  } else if (!phone.match(phoneNumberRegEx)) {
-		showAlert("Enter valid phone number ⚠️");
+		addError($("#mobile"));
 		return false;
 	  }
-	  if(district =="-1"){
-		showAlert("Select district ⚠️");
+	  if(district =="-1"){	  
+		addError($("#district"));
 		return false;
 	  }
 	  if(taluka =="-1"){
-		showAlert("Select taluka ⚠️");
+		addError($("#talukaId"));
 		return false;
 	  }
 	   if(post =="-1"){
-		showAlert("Select post ⚠️");
+		addError($("#postId"));
 		return false;
-	  }
-	  if(filename == ""){
-		showAlert("Please Upload Document");
-		return false;
-	  }
-	  if($("input[name='gender']:checked").val() == undefined){
-		showAlert("Please Select Gender");
-		return false;
-	  }
+	  }	 
 	  if($("#education").val() == "-1"){
-		showAlert("Please Select Education");
+		addError($("#education"));
 		return false;
 	  }
-	   if($("#education").val() == "-1"){
-		showAlert("Please Select Education");
+	  if($("#stream").val() == "-1"){
+		addError($("#stream"));
+		return false;
+	  }
+	  if($("#yearofpass").val() == "-1"){
+		addError($("#yearofpass"));
 		return false;
 	  }
 	  if($("#percentage").val() == "") {
-		showAlert("Enter your CGPA/Percentage");
+		addError($("#percentage"));
 		return false;
 	  }
+	   if(filename == ""){
+		addError($("#fileToUpload"));
+		return false;
+	  }
+	 
 	  $(obj).attr('value','Please wait...').prop('disabled',true);	  
 	  var map={};
 	  map["firstname"]=$("#first_name").val();
@@ -310,6 +328,26 @@
 			});	  
 	}
 	
+	function addError(obj){
+		obj.focus();
+		obj.addClass("error-text");
+		$([document.documentElement, document.body]).animate({
+			scrollTop: obj.offset().top-30
+		}, 2000);
+		$(obj.parent().find('span').get(0)).addClass('error-text');
+	}
+	
+	function removeError(obj){
+		obj.removeClass("error-text");
+		obj.parent().parent().parent().removeClass("error-text");
+		$(obj.parent().find('span').get(0)).removeClass('error-text');
+	}
+	function removeError1(obj){
+		removeError($(obj));
+	}
+	
+	
+	
 	function clearForm(){
 		 $("#first_name").val("");
 		 $("#last_name").val("");
@@ -330,6 +368,7 @@
 	}
 	
 	function getSelectedDistrictTalukas() {
+		removeError($("#district"));
 		$('#talukaId').empty();
 		$('#talukaId').append($("<option></option>").attr("value", "-1").text("Choose Taluka")); 
 		var data = talukaMap[$("#district").val()];
@@ -339,6 +378,7 @@
     }
 	
 	function getSelectedTalukasVillage() {
+		removeError($("#talukaId"));
         $('#postId').empty();
 	    $(postId).append($("<option></option>").attr("value", "-1").text("Choose Postal")); 
         var data = postMap[$("#talukaId").val()];
@@ -346,6 +386,9 @@
 			$('#postId').append($("<option></option>").attr("value", key).text(value)); 
 		});		
     }
+	function postChange(){
+		removeError($("#postId"));
+	}
 	function showAlert(msg){
         Swal.fire({
 		  text: msg,

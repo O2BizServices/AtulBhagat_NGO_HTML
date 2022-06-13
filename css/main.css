@@ -630,7 +630,9 @@ input {
   padding: 57px 65px;
   padding-bottom: 65px;
 }
-
+.error-text{
+	border: 1px solid red;
+}
 @media (max-width: 767px) {
   .card-4 .card-body {
     padding: 50px 40px;
