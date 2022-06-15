@@ -5,10 +5,11 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.8/dist/sweetalert2.all.min.js"></script>
 <script src="js/location.js" ></script>
 	<!-- Required meta tags-->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Title Page-->
-    <title>Registration Form</title>
+  <title>पुष्पा परशुराम प्रतिष्ठान</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="assets/images/logo.jpg" rel="icon">
+  <link href="assets/images/logo.jpg" rel="apple-touch-icon">
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="assets/css/style.css">
     <script src="assets/js/modernizr-2.6.2.min.js"></script>
@@ -35,19 +36,19 @@
 			</div>
             <div class="card card-4">
                 <div class="card-body">
-                    <h4 style="margin-left: -31px;">Personal Details</h4>
+                    <h4 style="margin-left: -31px;">Personal Details (वैयक्तिक माहिती)</h4>
 					<hr style="margin-bottom: 18px;margin-left: -31px;">
                     <form name="myForm">
                         <div class="input-group">
                             <div class="col-12">
                                 <div class="input-group">
-                                    <label class="label">first name</label>
+                                    <label class="label">first name (पहिले नाव)</label>
                                     <input class="input--style-4" type="text" id="first_name" required>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="input-group">
-                                    <label class="label">last name</label>
+                                    <label class="label">last name (आडनाव)</label>
                                     <input class="input--style-4" type="text" id="last_name">
                                 </div>
                             </div>
@@ -55,7 +56,7 @@
                         <div class="input-group">
                             <div class="col-12">
                                 <div class="input-group">
-                                    <label class="label">birth date</label>
+                                    <label class="label">birth date (जन्मदिनांक)</label>
                                     <div class="input-group-icon">
                                         <input class="input--style-4 js-datepicker" type="text" id="birthdate"
                                         <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
@@ -64,13 +65,13 @@
                             </div>
                             <div class="col-12">
                                 <div class="input-group" id="genderfield">
-                                    <label class="label">Gender</label>
+                                    <label class="label">Gender (लिंग)</label>
                                     <div class="p-t-10">
-                                        <label class="radio-container m-r-45">Male
+                                        <label class="radio-container m-r-45">Male (पुरुष)
                                             <input type="radio"  name="gender" value="Male" onClick="removeError1(this)">
                                             <span class="checkmark"></span>
                                         </label>
-                                        <label class="radio-container">Female
+                                        <label class="radio-container">Female (स्त्री)
                                             <input type="radio" name="gender" value="Female" onClick="removeError1(this)">
                                             <span class="checkmark"></span>
                                         </label>
@@ -81,21 +82,21 @@
                         <div class="input-group">
                             <div class="col-12">
                                 <div class="input-group">
-                                    <label class="label">Email</label>
+                                    <label class="label">Email (ईमेल)</label>
                                     <input class="input--style-4" type="email" id="email">
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="input-group">
-                                    <label class="label">Mobile Number</label>
+                                    <label class="label">Mobile Number (मोबाईल नंबर)</label>
                                     <input class="input--style-4" type="text" id="mobile">
                                 </div>
                             </div>
                         </div>
-						<h4 style="margin-left: -31px;">Address Details</h4>
+						<h4 style="margin-left: -31px;">Address Details (पत्ता तपशील)</h4>
 						<hr style="margin-bottom: 18px;margin-left: -31px;">
                         <div class="input-group" style="width: 100%">
-                            <label class="label">District</label>
+                            <label class="label">District (जिल्हा)</label>
                             <div class="rs-select2 js-select-simple select--search">
                                 <select name="district" id="district" onchange="getSelectedDistrictTalukas()">
                                     <option selected="selected" value = "-1">Choose District</option>
@@ -106,7 +107,7 @@
                             </div>
                         </div>
 						<div class="input-group" style="width: 100%">
-                            <label class="label">Taluka</label>
+                            <label class="label">Taluka (तालुका)</label>
                             <div class="rs-select2 js-select-simple select--search">
                                 <select id="talukaId" name="taluka" onchange="getSelectedTalukasVillage()">
                                     <option selected="selected" value = "-1">Choose Taluka</option>
@@ -115,7 +116,7 @@
                             </div>
                         </div>
 						<div class="input-group"style="width: 100%">
-                            <label class="label">Postal</label>
+                            <label class="label">Postal (पोस्टल)</label>
                             <div class="rs-select2 js-select-simple select--search" onchange="removeError1(this)">
                                 <select id="postId" name="post">
                                     <option selected="selected" value = "-1">Choose Postal</option>
@@ -123,10 +124,10 @@
                                 <div class="select-dropdown"></div>
                             </div>
                         </div>
-						<h4 style="margin-left: -31px;">Education Details</h4>
+						<h4 style="margin-left: -31px;">Education Details (शिक्षण तपशील)</h4>
 						<hr style="margin-bottom: 18px;margin-left: -31px;">
 						<div class="input-group"style="width: 100%">
-                            <label class="label">Education</label>
+                            <label class="label">Education (शिक्षण)</label>
                             <div class="rs-select2 js-select-simple select--search">
                                 <select id="education" onchange="removeError1(this)">
                                     <option selected="selected" value="-1">Choose Education</option>
@@ -141,7 +142,7 @@
                             </div>
                         </div>
 						<div class="input-group"style="width: 100%">
-                            <label class="label">Education Stream</label>
+                            <label class="label">Education Stream (शिक्षण प्रवाह)</label>
                             <div class="rs-select2 js-select-simple select--search">
                                 <select id="stream"  onchange="removeError1(this)">
                                     <option selected="selected" value="-1">Choose Stream</option>
@@ -154,7 +155,7 @@
                             </div>
                         </div>
 						<div class="input-group"style="width: 100%">
-                            <label class="label">Year of Passing</label>
+                            <label class="label">Year of Passing (उत्तीर्ण होण्याचे वर्ष)</label>
                             <div class="rs-select2 js-select-simple select--search">
                                 <select id="yearofpass"  onchange="removeError1(this)">
                                     <option selected="selected" value="-1">Choose Year</option>
@@ -163,7 +164,7 @@
                             </div>
                         </div>
 						<div class="input-group"style="width: 100%">
-                            <label class="label">Percentage/CGPA</label>
+                            <label class="label">Percentage/CGPA (टक्केवारी)</label>
                             <div class="rs-select2 js-select-simple select--search">
                                 <input class="input--style-4" type="text" id="percentage">
                             </div>
@@ -171,17 +172,17 @@
 						<div class="input-group">
                             <div class="col-12">
                                 <div class="input-group">
-                                    <label class="label">Other Details (if any)</label>
+                                    <label class="label">Other Details (if any) (इतर तपशील (असल्यास))</label>
                                     <textarea id="otherdetails" class="input--style-4" style="width:100%"></textarea>
                                 </div>
                             </div>
                         </div>
                         <div class="input-group"style="width: 100%">
-						 <label class="label">Upload Resume</label>
+						 <label class="label">Upload Resume (रेझ्युमे अपलोड करा)</label>
 						<input type="file" name="fileToUpload" onchange="encodeImgtoBase64(this)" id="fileToUpload" style="padding-bottom: 20px;padding-top: 20px;">
 						</div>
                         <div class="p-t-15">
-                           <input type="button" onClick="return submitData(this)" class="btn btn--radius-2 btn--blue" value="Submit Registration" />
+                           <input type="button" onClick="return submitData(this)" class="btn btn--radius-2 btn--blue" value="Submit Registration (नोंदणी सबमिट करा)" />
                         </div>						 
                     </form>
                 </div>
