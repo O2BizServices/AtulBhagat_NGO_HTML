@@ -1,0 +1,1 @@
+var contextPath="https://36n00y4czc.execute-api.ap-northeast-1.amazonaws.com/dev/api/v1/";

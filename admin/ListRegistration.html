@@ -67,19 +67,7 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse pull-right">
                   <ul class="nav navbar-nav">
-                    <li><a  href="index.html">HOME</a></li>
-                    <li><a href="about.html">ABOUT</a></li>
-                    <li class="has-child"><a href="#">CAUSES</a>
-                      <ul class="submenu">
-                         <li class="submenu-item"><a href="causes.html">Causes list </a></li>
-                         <li class="submenu-item"><a href="causes-single.html">Single cause </a></li>
-                         <li class="submenu-item"><a href="causes-single.html">Single cause </a></li>
-                         <li class="submenu-item"><a href="causes-single.html">Single cause </a></li>
-                      </ul>
-                    </li>
-                    <li><a href="gallery.html">GALLERY</a></li>
-                    <li><a href="contact.html">CONTACT</a></li><li>
-					<li><a class="is-active" href="form.html">REGISTRATION</a></li>
+					<li><a class="is-active" href="form.html">Admin Panel</a></li>
                   </ul>
                 </div> <!-- /#navbar -->
               </div> <!-- /.container -->              
@@ -88,10 +76,11 @@
     </header> <!-- /. main-header -->	
    <div class="container">
      <div class="row">
+	 &nbsp;&nbsp;<input type="button" onClick="return downloadExcelData()" value="Export To Excel" class="btn btn-primary"/>
 		<div class="col-lg-12 table-responsive" style="margin-top:25px">
 			<div class="panel panel-default">
 					<div class="panel-heading">
-						All Customer Details
+						Registration Details
 					</div>
 					<!-- /.panel-heading -->
 					<div class="panel-body"> 
@@ -111,6 +100,7 @@
 							<tbody>	
 							</tbody>		
 						</table>
+						<div class="loader" align="center"></div>
 				</div>
 			</div>
 		</div>
@@ -133,23 +123,38 @@
     <script src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
     <script src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
     <script src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/linways/table-to-excel@v1.0.4/dist/tableToExcel.js"></script>
 
     <script src="../js/global.js"></script>
+	<script src="../js/env.js"></script>
 	<script>
-	var contextPath="https://36n00y4czc.execute-api.ap-northeast-1.amazonaws.com/dev/api/v1/";
 	loadData();
 	function loadData(){
 	 $.ajax({
 		  type: 'POST',
+		  headers: {
+                'token': localStorage.getItem("ngotoken"),
+			},
 		  url: contextPath +"getAllRegistrationDetails",
 		  complete: function (response1) {
 					if(response1.status == 200){						
 						generateTable(response1.responseJSON);
+					}	
+					if(response1.status == 401){	
+						location.href="login.html";
 					}					
 				},		  		
 			});	  
 	
 	}	
+	function downloadExcelData(){	
+	TableToExcel.convert(document.getElementById('custDetailsTable'), { 
+		name:'RegistrationData.xlsx'
+		,sheet: { 
+		name:'RegistrationData'
+		}
+		});	
+	}
 	function generateTable(response1){
 		var count=1;
 		$.each(response1, function(key,response) {	
@@ -160,16 +165,13 @@
 			$("#custDetailsTable tbody").append(newRow);
 			count++;		
 		 });
-		 
+		 $(".loader").removeClass("loader");
 		  $('#custDetailsTable').DataTable().destroy();
 		$('#custDetailsTable').DataTable({
 			responsive: true,
 			"order": [],			
 			iDisplayLength:50,
-			lengthMenu:[[10,50,100,200,-1],[10,50,100,200,"ALL"]],
-			"buttons": [
-			  'excel'
-			]			
+			lengthMenu:[[10,50,100,200,-1],[10,50,100,200,"ALL"]]		
         	});
  		$("#custDetailsTable").parent().addClass('table-responsive');
 		
@@ -181,7 +183,10 @@
 	  map["docName"]=$(obj).attr("data-docname");	 
 		$.ajax({
 		  type: 'POST',
-		  data:JSON.stringify(map),	
+		  data:JSON.stringify(map),
+			headers: {
+                'token': localStorage.getItem("ngotoken"),
+			},
 		  url: contextPath +"downloadResume",
 		  complete: function (response1) {
 					if(response1.status == 200){						

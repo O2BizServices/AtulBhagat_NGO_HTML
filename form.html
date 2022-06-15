@@ -204,6 +204,7 @@
     <script src="vendor/datepicker/daterangepicker.js"></script>
     <!-- Main JS-->
     <script src="js/global.js"></script>
+	 <script src="js/env.js"></script>
 	<script>
 	for(i=2000;i<=2023;i++){
 		$('#yearofpass').append($("<option></option>").attr("value", i).text(i)); 
@@ -221,13 +222,18 @@
 		});
 	});
 	var filename="",filecontent="";
-	var contextPath="https://36n00y4czc.execute-api.ap-northeast-1.amazonaws.com/dev/api/v1/";
 	function encodeImgtoBase64(element) {
+	  filename="";filecontent="";
       var file = element.files[0];
+	  if (file.size > 2000000) {
+        showAlert('Document size must not be greater than 2MB');
+		$("#fileToUpload").val("");
+		return;
+      }
 	  var reader = new FileReader();
 	  filename = file.name;
       reader.onload = function(readerEvt) {
-            var binaryString = readerEvt.target.result;
+			var binaryString = readerEvt.target.result;
 			filecontent=btoa(binaryString);
 			removeError($("#fileToUpload"));
         };
