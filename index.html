@@ -29,7 +29,9 @@
 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.8/dist/sweetalert2.all.min.js"></script>
   <script>
-  localStorage.setItem("testid","jjjjjjjjjjj");
+  if(window.location.search == '?webview'){
+	localStorage.setItem("webview","Y");
+  }
   </script>
 
 </head>
@@ -73,6 +75,7 @@
     <div class="carousel-inner myslider" role="listbox">
 
       <div class="item active">
+	  
 
         <img src="assets/images/slider/home-slider-1.jpg" alt="">
 
@@ -188,58 +191,59 @@
 
       <div class="row">
 
-        <div class="col-md-3 col-sm-6">
+        <div class="col-md-3">
 
           <div class="about-us-col">
             <div class="col-icon-wrapper" style="height: 38%">
-              <img src="assets/images/icons/our-mission-icon.png" alt="">
+              <img src="assets/images/icons/help-icon.png" alt="">
             </div>
             <h3 class="col-title" style="height: 30%">प्रकल्पग्रस्तांसाठी रोजगार </h3>
-            <a href="form.html" class="btn btn-primary"> Read more </a>
+            <a href="form.html" class="btn btn-primary"> अधिक माहिती....  </a>
           </div>
 
         </div>
 
 
-        <div class="col-md-3 col-sm-6">
+        <div class="col-md-3">
 
           <div class="about-us-col">
 
             <div class="col-icon-wrapper btnIconHeight" style="height: 38%">
-              <img src="assets/images/icons/make-donation-icon.png" alt="">
+              <img src="assets/images/icons/team.png" alt="" style="height:100px">
             </div>
-            <h3 class="col-title btnIconHeight" style="height: 30%">Make donations</h3>
-            <a href="#" class="btn btn-primary"> Read more </a>
+            <h3 class="col-title btnIconHeight" style="height: 30%">संस्थेचे पदाधिकारी</h3>
+            <a href="team.html" class="btn btn-primary"> अधिक माहिती....  </a>
 
           </div>
 
         </div>
 
 
-        <div class="col-md-3 col-sm-6">
+        <div class="col-md-3">
 
           <div class="about-us-col">
 
             <div class="col-icon-wrapper" style="height: 38%">
-              <img src="assets/images/icons/help-icon.png" alt="">
+              <img src="assets/images/icons/our-mission-icon.png" alt="">
             </div>
-            <h3 class="col-title" style="height: 30%">Help & support</h3>
-            <a href="#" class="btn btn-primary"> Read more </a>
+			<h3 class="col-title" style="height: 30%">संस्थेचे उद्दिष्ट</h3>
+            
+            <a href="about.html" class="btn btn-primary"> अधिक माहिती....  </a>
 
           </div>
 
         </div>
 
 
-        <div class="col-md-3 col-sm-6">
+        <div class="col-md-3">
 
           <div class="about-us-col">
 
             <div class="col-icon-wrapper" style="height: 38%">
-              <img src="assets/images/icons/programs-icon.png" alt="">
+              <img src="assets/images/icons/contact.png" alt="" style="height:90px">
             </div>
-            <h3 class="col-title" style="height: 30%">our programs</h3>
-            <a href="#" class="btn btn-primary"> Read more </a>
+            <h3 class="col-title" style="height: 30%"> संपर्क</h3>
+            <a href="contact.html" class="btn btn-primary"> अधिक माहिती....  </a>
 
           </div>
 
@@ -363,6 +367,7 @@
   <script src="assets/js/main.js"></script>
 
   <script>
+  
     function showAlert(msg) {
       Swal.fire({
         text: msg,

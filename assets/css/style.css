@@ -174,7 +174,7 @@ a:hover, a:focus, a:active {
 }
 
 .about-us-col {
-  height: 325px;
+  height: 244px;
   padding: 25px;
   text-align: center;
   background-color: #0076a3;
@@ -336,12 +336,12 @@ a:hover, a:focus, a:active {
   padding: 30px 0;
 }
 .main-footer .footer-title {
+	 text-align: center;
   text-transform: uppercase;
   margin-bottom: 10px;
 }
 .main-footer .footer-title .title-under {
   background: #fff;
-  margin: 15px 0;
   text-align: left;
 }
 .main-footer .footer-title .title-under:after {
@@ -349,7 +349,7 @@ a:hover, a:focus, a:active {
   background: #fff;
 }
 .main-footer .footer-content {
-  text-align: justify;
+  text-align: center;
   font-size: 13px;
 }
 .main-footer .tweet {
@@ -544,7 +544,7 @@ form .alert {
   margin: 5px auto;
   background: #1f76bd;
   height: 1px;
-  width: 280px;
+  width: 90px;
 }
 .title-under:after {
   content: '';
@@ -1056,4 +1056,14 @@ form .alert {
 }
 .height55{	
 	height:55px;
+}
+.img1{
+	background: url(../../assets/images/slider/home-slider-1.jpg) no-repeat center center;
+	    background-size: cover;
+    text-align: center;
+    background-position: center;
+	    margin-top: -21px;
+    padding: 0;
+    min-width: 100%;
+}
 }

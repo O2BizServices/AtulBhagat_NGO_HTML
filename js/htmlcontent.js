@@ -54,12 +54,12 @@ var header = '<header class="main-header">'+
             '</div>'+
           '</div>'+
           '<div class="col-md-4">'+
-            '<div class="footer-col">'+
+            '<div class="footer-col" id="playstorelogo">'+
               '<h4 class="footer-title">अनुप्रयोग डाउनलोड करा <span class="title-under"></span></h4>'+
               '<div class="footer-content">'+
                 '<div class="footer-form">'+
                   '<div class="footer-form">'+
-                    '<img src="assets/images/playstore.png" style="width:150px"/><br><br>'+
+                    '<a href="https://play.google.com/store/apps/details?id=com.pushpaparshurampratishthan" target="_blank"><img src="assets/images/playstore.png" style="width:150px"/></a><br><br>'+
 					'<img src="assets/images/applestore.png" style="width:150px" />'+
                   '</div>'+
                 '</div>'+
@@ -80,8 +80,13 @@ var header = '<header class="main-header">'+
 	if($(this).attr("href") == am){
 		$(this).addClass("is-active");
 		}
-	});	 
+	});	
+
+	 if(localStorage.getItem("webview") == "Y"){
+		 $("#playstorelogo").hide();
+	 }
  }
  function hideLogo(){	 
 	 $("#logoimg").addClass("height55")
  }
+ 
