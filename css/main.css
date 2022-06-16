@@ -405,6 +405,7 @@ input {
   display: block;
   margin-bottom: 5px;
   text-align: left;
+  font-weight: normal;
 }
 
 .radio-container {
@@ -418,6 +419,7 @@ input {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  font-weight: normal;
 }
 
 .radio-container input {
