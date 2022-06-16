@@ -35,7 +35,7 @@ var header = '<header class="main-header">'+
           '<div class="col-md-4">'+
             '<div class="footer-col">'+
               '<div class="footer-content">'+
-                '<img src="assets/images/logo1.jpg"> '+
+                '<img src="assets/images/logo_l.jpg"> '+
               '</div>'+
             '</div>'+
           '</div>'+
