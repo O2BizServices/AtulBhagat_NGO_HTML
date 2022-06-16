@@ -16,10 +16,9 @@ var header = '<header class="main-header">'+
             '<ul class="nav navbar-nav" id="menuid">'+
               '<li><a href="index.html">HOME</a></li>'+
               '<li><a href="about.html">ABOUT</a></li>'+
+			  '<li><a href="team.html">TEAM</a></li>'+
               '<li><a href="gallery.html">GALLERY</a></li>'+
-              '<li><a href="information.html">REGISTRATION</a></li>'+
-			  '<li><a href="contact.html">CONTACT</a></li>'+
-              '<li><a href="form.html">JOB APPLY</a></li>'+
+              '<li><a href="contact.html">CONTACT</a></li>'+
             '</ul>'+
           '</div>'+
         '</div>'+
@@ -45,15 +44,11 @@ var header = '<header class="main-header">'+
               '<h4 class="footer-title">आमचे लक्ष्य<span class="title-under"></span></h4>'+
               '<div class="footer-content">'+
                 '<ul class="tweets list-unstyled">'+
-                  '<li class="tweet">'+
-                    'आम्ही सदैव सत्य आणि न्यायासाठी लढू'+
-                  '</li>'+
-                  '<li class="tweet">'+
-                    'आम्ही नेहमी गरीब आणि अन्यायी लोकांना मदत करू'+
-                  '</li>'+
-                  '<li class="tweet">'+
-                    'सामाजिक आरोग्यासाठी जनजागृती व कार्यक्रम राबवणे'+
-                  '</li>'+
+                  '<li class="tweet">शिक्षणाचा प्रचार करणे</li>'+
+                  '<li class="tweet">सामाजिक एकता व बंधू प्रेम वाढवणे</li>'+
+                  '<li class="tweet">समाजामधील कौशल्याला वाव देणे</li>'+
+                  '<li class="tweet">भारतीय संस्कृती, कला व क्रीडेला वाव देणे</li>'+
+                  '<li class="tweet">सामाजिक आरोग्यासाठी जनजागृती व कार्यक्रम राबवणे</li>'+                  
                 '</ul>'+
               '</div>'+
             '</div>'+

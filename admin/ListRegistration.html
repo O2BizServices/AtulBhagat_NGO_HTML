@@ -142,11 +142,17 @@
 		}
 		});	
 	}
+	function checkNull(data){
+		if(data == null || data == "null" || data == "undefined"){
+			return "";
+		}
+		return data;	
+	}
 	function generateTable(response1){
 		var count=1;
 		$.each(response1, function(key,response) {	
-			var newRow = "<tr><td>"+count+"</td><td>"+$(response).attr("firstname")+" "+$(response).attr("lastname")+"</td><td>"+$(response).attr("mobileno")+"</td>"+
-				"<td>"+$(response).attr("gender")+"</td><td>"+$(response).attr("education")+"</td><td>"+$(response).attr("stream")+"</td><td>"+$(response).attr("percentage")+"</td><td>"+$(response).attr("otherdetails")+"</td>"+
+			var newRow = "<tr><td>"+count+"</td><td>"+$(response).attr("firstname")+" "+checkNull($(response).attr("middlename"))+" "+checkNull($(response).attr("lastname"))+"</td><td>"+$(response).attr("mobileno")+"</td>"+
+				"<td>"+$(response).attr("gender")+"</td><td>"+$(response).attr("education")+"</td><td>"+$(response).attr("stream")+"</td><td>"+$(response).attr("percentage")+"</td><td>"+checkNull($(response).attr("otherdetails"))+"</td>"+
 				'<td class="center"><a href="javascript:void(0)" data-mobile="'+$(response).attr("mobileno")+'" data-docname="'+$(response).attr("attachDocName")+'" onclick="return downloadResume(this)">'+$(response).attr("attachDocName")+'</a></td>'+
 				'</tr>';
 			$("#custDetailsTable tbody").append(newRow);

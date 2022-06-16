@@ -357,9 +357,7 @@ a:hover, a:focus, a:active {
 }
 .main-footer .tweet:after {
   content: "";
-  height: 1px;
   display: block;
-  background: #115c9b;
   width: 150px;
   margin: 15px auto;
 }

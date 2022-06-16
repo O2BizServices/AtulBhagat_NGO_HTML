@@ -46,6 +46,12 @@
                                     <input class="input--style-4" type="text" id="first_name" required>
                                 </div>
                             </div>
+							<div class="col-12">
+                                <div class="input-group">
+                                    <label class="label">middle name (मधले नाव)</label>
+                                    <input class="input--style-4" type="text" id="middle_name">
+                                </div>
+                            </div>
                             <div class="col-12">
                                 <div class="input-group">
                                     <label class="label">last name (आडनाव)</label>
@@ -116,7 +122,7 @@
                             </div>
                         </div>
 						<div class="input-group"style="width: 100%">
-                            <label class="label">Postal (पोस्टल)</label>
+                            <label class="label">Post (पोस्ट)</label>
                             <div class="rs-select2 js-select-simple select--search" onchange="removeError1(this)">
                                 <select id="postId" name="post">
                                     <option selected="selected" value = "-1">Choose Postal</option>
@@ -306,6 +312,7 @@
 	  $(obj).attr('value','Please wait...').prop('disabled',true);	  
 	  var map={};
 	  map["firstname"]=$("#first_name").val();
+	  map["middlename"]=$("#middle_name").val();	  
 	  map["lastname"]=$("#last_name").val();
 	  map["dob"]=$("#birthdate").val();
 	  map["email"]=$("#email").val();
@@ -357,6 +364,7 @@
 	
 	function clearForm(){
 		 $("#first_name").val("");
+		 $("#middle_name").val("");
 		 $("#last_name").val("");
 		 $("#birthdate").val("");
 		 $("#email").val("");
@@ -372,6 +380,7 @@
 	     $("#otherdetails").val("");
 	     $("#yearofpass").val("-1").change();
 	     $("#percentage").val("");
+		 
 	}
 	
 	function getSelectedDistrictTalukas() {
