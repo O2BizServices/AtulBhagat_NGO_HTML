@@ -10,7 +10,7 @@ var header = '<header class="main-header">'+
               '<span class="icon-bar"></span>'+
               '<span class="icon-bar"></span>'+
             '</button>'+
-            '<a class="navbar-brand" href="index.html"><img src="assets/images/logo.jpg" style="margin-top:-10px"  id="logoimg" alt=""></a>'+
+            '<a class="navbar-brand" href="index.html"><img src="assets/images/logo22.png" style="margin-top: -47px;height: 142px;"  id="logoimg" alt=""></a>'+
           '</div>'+
           '<div id="navbar" class="navbar-collapse collapse pull-right">'+
             '<ul class="nav navbar-nav" id="menuid">'+
