@@ -17,6 +17,8 @@ var header = '<header class="main-header">'+
               '<li><a href="index.html">HOME</a></li>'+
               '<li><a href="about.html">ABOUT</a></li>'+
 			  '<li><a href="team.html">TEAM</a></li>'+
+			  '<li><a href="goal.html">GOAL</a></li>'+
+			  '<li><a href="event.html">EVENTS</a></li>'+
               '<li><a href="gallery.html">GALLERY</a></li>'+
               '<li><a href="contact.html">CONTACT</a></li>'+
             '</ul>'+
