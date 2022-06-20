@@ -2,7 +2,6 @@
 <html>
 <head>
 <script src="https://o2bizservices.com/assets/vendor/jquery/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.8/dist/sweetalert2.all.min.js"></script>
 <script src="js/location.js" ></script>
 	<!-- Required meta tags-->
   <title>पुष्पा परशुराम प्रतिष्ठान</title>
@@ -333,11 +332,12 @@
 		  data:JSON.stringify(map),	
 		  url: contextPath +"saveRegistration",
 		  complete: function (response1) {
-					$(obj).attr('value','Submit Registration').prop('disabled',false);
-					showAlert(response1.responseJSON);
 					if(response1.status == 200){						
-						clearForm();
-					}					
+						location.href="RegistrationSucess.html?"+response1.responseJSON;
+					}else{
+						$(obj).attr('value','Submit Registration').prop('disabled',false);
+						showAlert(response1.responseJSON);
+					}										
 				},		  		
 			});	  
 	}
@@ -359,8 +359,6 @@
 	function removeError1(obj){
 		removeError($(obj));
 	}
-	
-	
 	
 	function clearForm(){
 		 $("#first_name").val("");
@@ -406,16 +404,7 @@
 		removeError($("#postId"));
 	}
 	function showAlert(msg){
-        Swal.fire({
-		  text: msg,
-		  type: 'warning',
-		  showCancelButton: false,
-		  // Background color of the "Confirm"-button. The default color is #3085d6
-		  confirmButtonColor: 'LightSeaGreen',
-		  // Background color of the "Cancel"-button. The default color is #aaa
-		  cancelButtonColor: 'Crimson',
-		  confirmButtonText: 'OK'
-		})
+       alert(msg);
 	}
 	</script>
 </body>

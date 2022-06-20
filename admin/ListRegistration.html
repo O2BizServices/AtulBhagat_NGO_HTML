@@ -75,9 +75,13 @@
 						  <table class="table table-striped table-bordered table-hover" id="custDetailsTable">
 						  <thead> 
 							<th>Sr No.</th>
+							<th>App No</th>
 							<th>FullName</th>
 							<th>Mobile No</th>
-							<th>Gender</th>
+							<th>Gender</th>							
+							<th>District</th>
+							<th>Taluka</th>
+							<th>Post</th>
 							<th>Education</th>
 							<th>Stream</th>
 							<th>%/CGPA</th>
@@ -151,8 +155,8 @@
 	function generateTable(response1){
 		var count=1;
 		$.each(response1, function(key,response) {	
-			var newRow = "<tr><td>"+count+"</td><td>"+$(response).attr("firstname")+" "+checkNull($(response).attr("middlename"))+" "+checkNull($(response).attr("lastname"))+"</td><td>"+$(response).attr("mobileno")+"</td>"+
-				"<td>"+$(response).attr("gender")+"</td><td>"+$(response).attr("education")+"</td><td>"+$(response).attr("stream")+"</td><td>"+$(response).attr("percentage")+"</td><td>"+checkNull($(response).attr("otherdetails"))+"</td>"+
+			var newRow = "<tr><td>"+count+"</td><td><a href='javascript:void(0)' data-mobile='"+$(response).attr("mobileno")+"' data-docname='"+$(response).attr("attachDocName")+"' onclick='return downloadResume(this)'>"+$(response).attr("appNo")+"</a></td><td>"+$(response).attr("firstname")+" "+checkNull($(response).attr("middlename"))+" "+checkNull($(response).attr("lastname"))+"</td><td>"+$(response).attr("mobileno")+"</td>"+
+				"<td>"+$(response).attr("gender")+"</td><td>"+$(response).attr("district")+"</td><td>"+$(response).attr("taluka")+"</td><td>"+$(response).attr("post")+"</td><td>"+$(response).attr("education")+"</td><td>"+$(response).attr("stream")+"</td><td>"+$(response).attr("percentage")+"</td><td>"+checkNull($(response).attr("otherdetails"))+"</td>"+
 				'<td class="center"><a href="javascript:void(0)" data-mobile="'+$(response).attr("mobileno")+'" data-docname="'+$(response).attr("attachDocName")+'" onclick="return downloadResume(this)">'+$(response).attr("attachDocName")+'</a></td>'+
 				'</tr>';
 			$("#custDetailsTable tbody").append(newRow);

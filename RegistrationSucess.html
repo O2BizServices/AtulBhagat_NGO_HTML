@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+<head>
+    <meta charset="utf-8">
+  <title>पुष्पा परशुराम प्रतिष्ठान</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="assets/images/logo.png" type="image/x-icon">
+  <link href="assets/images/logo.png" rel="apple-touch-icon">
+ 
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Dosis:400,700' rel='stylesheet' type='text/css'>
+
+    <!-- Bootsrap -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+
+    <!-- Template main Css -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Modernizr -->
+    <script src="assets/js/modernizr-2.6.2.min.js"></script>
+
+
+</head>
+
+<body>
+	<div id="headercontent"></div>
+    <div class="main-container">
+
+        <div class="container">
+
+            <div class="row fadeIn animated" style="text-align:center">
+			<br><br><br>
+				<h1>आमच्यासोबत नोंदणी केल्याबद्दल धन्यवाद.</h1>
+				<br>
+				<h2>तुमचा अर्ज क्रमांक <b><span id="appNo"></span></b> आहे.</h2>
+				<br>
+				<h3>आमची टीम लवकरच तुमच्याशी संपर्क साधेल.</h3>
+				<br><br><br>
+				 <input type="button" onClick="return homepage(this)" class="btn btn-primary" style="white-space: normal;" value="Home" />
+               
+<br><br><br><br>
+
+            </div> <!-- /.row -->
+
+        </div>
+
+
+
+    </div>
+	<div id="footercontent"></div>
+    <!-- jQuery -->
+   <script>window.jQuery || document.write('<script src="assets/js/jquery-1.11.1.min.js"><\/script>')</script>
+<script src="js/htmlcontent.js"></script>
+    <!-- Bootsrap javascript file -->
+    <script src="assets/js/bootstrap.min.js"></script>
+
+
+    <!-- Template main javascript -->
+    <script src="assets/js/main.js"></script>
+	<script>
+	
+	try{
+	var appNo = atob(location.search.substr(1));
+	$("#appNo").html(appNo);
+	
+	}catch(e){
+	//window.close();
+	
+	}
+	
+	function homepage(){
+		location.href="index.html";
+	}
+	
+	
+	</script>
+
+</body>
+
+</html>
