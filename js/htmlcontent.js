@@ -15,12 +15,12 @@ var header = '<header class="main-header">'+
           '<div id="navbar" class="navbar-collapse collapse pull-right">'+
             '<ul class="nav navbar-nav" id="menuid">'+
               '<li><a href="index.html">HOME</a></li>'+
-              '<li><a href="about.html">ABOUT</a></li>'+
-			  '<li><a href="team.html">TEAM</a></li>'+
+              '<li><a href="team.html">TEAM</a></li>'+
 			  '<li><a href="goal.html">GOAL</a></li>'+
 			  '<li><a href="event.html">EVENTS</a></li>'+
               '<li><a href="gallery.html">GALLERY</a></li>'+
               '<li><a href="contact.html">CONTACT</a></li>'+
+			  '<li><a href="about.html">ABOUT</a></li>'+
             '</ul>'+
           '</div>'+
         '</div>'+
@@ -57,7 +57,7 @@ var header = '<header class="main-header">'+
           '</div>'+
           '<div class="col-md-4">'+
             '<div class="footer-col" id="playstorelogo">'+
-              '<h4 class="footer-title">अनुप्रयोग डाउनलोड करा <span class="title-under"></span></h4>'+
+              '<h4 class="footer-title">अँप डाउनलोड करा <span class="title-under"></span></h4>'+
               '<div class="footer-content">'+
                 '<div class="footer-form">'+
                   '<div class="footer-form">'+
