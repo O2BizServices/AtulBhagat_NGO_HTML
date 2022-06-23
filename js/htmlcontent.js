@@ -61,8 +61,7 @@ var header = '<header class="main-header">'+
               '<div class="footer-content">'+
                 '<div class="footer-form">'+
                   '<div class="footer-form">'+
-                    '<a href="https://play.google.com/store/apps/details?id=com.pushpaparshurampratishthan" target="_blank"><img src="assets/images/playstore.png" style="width:150px"/></a><br><br>'+
-					'<img src="assets/images/applestore.png" style="width:150px" />'+
+                    '<br><br><a href="https://play.google.com/store/apps/details?id=com.pushpaparshurampratishthan" target="_blank"><img src="assets/images/playstore.png" style="width:150px"/></a><br><br>'+
                   '</div>'+
                 '</div>'+
               '</div>'+
