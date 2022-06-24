@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Title Page-->
-    <title>पुष्पा परशुराम प्रतिष्ठान</title>
+    <title>Pushpa Parshuram Pratishthan</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="../assets/images/logo.png" type="image/x-icon">
@@ -61,10 +61,7 @@
     </header> <!-- /. main-header -->	
    <div class="container">
      <div class="row">
-	 <div class="col-lg-3" style="margin-top: 15px;">
-		<input type="button" onClick="return downloadExcelData()" value="Export To Excel" class="btn btn-primary"/>
-	 </div>
-		<div class="col-lg-12 table-responsive" style="margin-top:25px">
+	 		<div class="col-lg-12 table-responsive" style="margin-top:25px">
 			<div class="panel panel-default">
 					<div class="panel-heading">
 						Registration Details
@@ -86,6 +83,7 @@
 							<th>Village</th>
 							<th>Education</th>
 							<th>Stream</th>
+							<th>Year Of Passing</th>
 							<th>%/CGPA</th>
 							<th>Details</th>
 							<th>DownloadResume</th>
@@ -113,10 +111,18 @@
     <script src="../vendor/datepicker/daterangepicker.js"></script>
     <!-- Main JS-->
 	 <!-- DataTables JavaScript -->
-    <script src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
-    <script src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
-    <script src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
-	<script src="https://cdn.jsdelivr.net/gh/linways/table-to-excel@v1.0.4/dist/tableToExcel.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css"> 
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.0.1/css/buttons.dataTables.min.css">
+
+<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
+
 
     <script src="../js/global.js"></script>
 	<script src="../js/env.js"></script>
@@ -158,15 +164,22 @@
 		var count=1;
 		$.each(response1, function(key,response) {	
 			var newRow = "<tr><td>"+count+"</td><td><a href='javascript:void(0)' data-mobile='"+$(response).attr("mobileno")+"' data-docname='"+$(response).attr("attachDocName")+"' onclick='return downloadResume(this)'>"+$(response).attr("appNo")+"</a></td><td>"+$(response).attr("dateTime")+"</td><td>"+$(response).attr("firstname")+" "+checkNull($(response).attr("middlename"))+" "+checkNull($(response).attr("lastname"))+"</td><td>"+$(response).attr("mobileno")+"</td>"+
-				"<td>"+$(response).attr("gender")+"</td><td>"+$(response).attr("district")+"</td><td>"+$(response).attr("taluka")+"</td><td>"+$(response).attr("post")+"</td><td>"+checkNull($(response).attr("village"))+"</td><td>"+$(response).attr("education")+"</td><td>"+$(response).attr("stream")+"</td><td>"+$(response).attr("percentage")+"</td><td>"+checkNull($(response).attr("otherdetails"))+"</td>"+
+				"<td>"+$(response).attr("gender")+"</td><td>"+$(response).attr("district")+"</td><td>"+$(response).attr("taluka")+"</td><td>"+$(response).attr("post")+"</td><td>"+checkNull($(response).attr("village"))+"</td><td>"+$(response).attr("education")+"</td><td>"+$(response).attr("stream")+"</td><td>"+$(response).attr("yearOfPass")+"</td></td><td>"+$(response).attr("percentage")+"</td><td>"+checkNull($(response).attr("otherdetails"))+"</td>"+
 				'<td class="center"><a href="javascript:void(0)" data-mobile="'+$(response).attr("mobileno")+'" data-docname="'+$(response).attr("attachDocName")+'" onclick="return downloadResume(this)">'+$(response).attr("attachDocName")+'</a></td>'+
 				'</tr>';
 			$("#custDetailsTable tbody").append(newRow);
 			count++;		
 		 });
-		 $(".loader").removeClass("loader");
+		  $(".loader").removeClass("loader");
 		  $('#custDetailsTable').DataTable().destroy();
-		$('#custDetailsTable').DataTable({
+		  $('#custDetailsTable').DataTable({
+			dom: 'Bfrtip',
+			buttons: [
+				{ extend: 'copyHtml5'},
+				{ extend: 'excelHtml5'},
+				{ extend: 'csvHtml5'},
+				{ extend: 'pdfHtml5', orientation: 'landscape', pageSize: 'LEGAL' }
+			],
 			responsive: true,
 			"order": [],			
 			iDisplayLength:50,
@@ -179,7 +192,8 @@
 	function downloadResume(obj){
 	 var map={};
 	  map["mobile"]=$(obj).attr("data-mobile");
-	  map["docName"]=$(obj).attr("data-docname");	 
+	  map["docName"]=$(obj).attr("data-docname");
+		$(".dt-buttons").append('<i class="fa fa-spinner fa-spin fa-2x" id="spinner1"></i>');	  
 		$.ajax({
 		  type: 'POST',
 		  data:JSON.stringify(map),
@@ -188,7 +202,9 @@
 			},
 		  url: contextPath +"downloadResume",
 		  complete: function (response1) {
-					if(response1.status == 200){						
+					$("#spinner1").remove();
+					if(response1.status == 200){
+											
 						var linkSource = 'data:application/octet-stream;base64,' + response1.responseJSON;
 						const downloadLink = document.createElement('a');
 						document.body.appendChild(downloadLink);
@@ -196,7 +212,10 @@
 						downloadLink.target = '_self';
 						downloadLink.download = $(obj).attr("data-docname");
 						downloadLink.click(); 
-					}					
+					}	
+					if(response1.status == 500){					
+						alert("Please download resume after 10 minutes");
+					}
 				},		  		
 			});	  
 	}

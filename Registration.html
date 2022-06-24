@@ -33,12 +33,15 @@
 			<div align="center" style="margin-bottom:15px">
 				<h1>ऑनलाइन नोंदणी</h1>
 			</div>
+			<div class="card card-4">
+			<div style="padding: 15px;">
 			<p>21 व्या शतकातील जगातील सर्वात मोठ्या नियोजित शहरांपैकी एक म्हणजे आपली नवी मुंबई. सिडको मार्फत केलेल्या या नवी मुंबई प्रकल्पामध्ये JNPT बंदर (भारतातील सर्वात मोठे कंटेनर बंदर), उरण नगर परिषद,  नवी मुंबई आंतरराष्ट्रीय विमानतळ, नवी मुंबई महानगरपालिका, नवी मुंबई विशेष आर्थिक क्षेत्र- SEZ, पनवेल महानगरपालिका आणि  TTC (Trans Thane Creek) MIDC यांचा समावेश आहे.
 </p><br><p>
 या प्रकल्पांमुळे, हजारो नोकऱ्या  निर्मणी झाल्या आहेत आणि होणार आहेत . पण दुर्दैव असे कि स्थानिकांना व प्रकल्पग्रस्तांना प्राधान्य न देता बाहेरून भरती केली जाते. नंतर हेच बाहेरुन आलेले अधिकारी स्थानिकांना व प्रकल्पग्रस्तांना त्रास देण्याचे व अडचण निर्माण करण्याचे काम करतात. 
 </p><br><p>
 हे सगळे थांबवण्याचे उद्दिष्ट, “पुष्पा परशुराम प्रतिष्ठान”, या संघटनेचे आहे. प्रकल्पग्रस्त व स्थानिकांना, आपल्याच  मातिवर निर्माण केलेल्या प्रकल्पांमध्ये, नोकऱ्या मिळाल्याच पाहिजे. नोकऱ्या मिळवण्यासाठी एक संघटित आणि प्रामाणिक प्रयत्न करणे गरजेचे आहे. त्यासाठी सर्व स्थानिकांना व प्रकल्पग्रस्तांना विनंती आहे कि तुम्ही खालील फॉर्म भरून घ्यावे. पुढील माहिती तुमच्या रजिस्टर नंबरवर देण्यात येईल.
-</p><br>
+</p>
+</div></div><br>
             <div class="card card-4">
                 <div class="card-body">
                     <h4 style="margin-left: -31px;">Personal Details (वैयक्तिक माहिती)</h4>
@@ -91,12 +94,6 @@
                             </div>
                         </div>
                         <div class="input-group">
-                            <div class="col-12">
-                                <div class="input-group">
-                                    <label class="label">Email (ईमेल)</label>
-                                    <input class="input--style-4" type="email" id="email">
-                                </div>
-                            </div>
                             <div class="col-12">
                                 <div class="input-group">
                                     <label class="label">Mobile Number (मोबाईल नंबर)</label>
@@ -199,7 +196,9 @@
 						<input type="file" name="fileToUpload" onchange="encodeImgtoBase64(this)" id="fileToUpload" style="padding-bottom: 20px;padding-top: 20px;">
 						</div>
                         <div class="p-t-15">
-                           <input type="button" onClick="return submitData(this)" class="btn btn--radius-2 btn--blue" style="white-space: normal;" value="Submit" />
+                           <button type="button" onClick="return submitData(this)" class="btn btn--radius-2 btn--blue" style="width: 100%;">
+						   Submit
+						   </button>
                         </div>						 
                     </form>
                 </div>
@@ -260,7 +259,6 @@
 	function submitData(obj) {
 	  let first_name = document.forms["myForm"]["first_name"].value;
 	  let birth_date = document.forms["myForm"]["birthdate"].value;
-	  let email = document.forms["myForm"]["email"].value;
 	  let phone = document.forms["myForm"]["mobile"].value;
 	  let district = document.forms["myForm"]["district"].value;
 	  let taluka = document.forms["myForm"]["taluka"].value;
@@ -324,13 +322,12 @@
 		return false;
 	  }
 	 
-	  $(obj).attr('value','Please wait...').prop('disabled',true);	  
+	  $(obj).html('<i class="fa fa-spinner fa-spin"></i>&nbsp;&nbsp;&nbsp;Please Wait ...').prop('disabled',true);
 	  var map={};
 	  map["firstname"]=$("#first_name").val();
 	  map["middlename"]=$("#middle_name").val();	  
 	  map["lastname"]=$("#last_name").val();
 	  map["dob"]=$("#birthdate").val();
-	  map["email"]=$("#email").val();
 	  map["mobile"]=$("#mobile").val();
 	  map["district"]=$("#district :selected").html();
 	  map["taluka"]=$("#talukaId :selected").html();
@@ -352,7 +349,7 @@
 					if(response1.status == 200){						
 						location.href="RegistrationSucess.html?"+response1.responseJSON;
 					}else{
-						$(obj).attr('value','Submit Registration').prop('disabled',false);
+						$(obj).html('Submit').prop('disabled',false);	  
 						showAlert(response1.responseJSON);
 					}										
 				},		  		
@@ -382,7 +379,6 @@
 		 $("#middle_name").val("");
 		 $("#last_name").val("");
 		 $("#birthdate").val("");
-		 $("#email").val("");
 		 $("#mobile").val("");
 		 $("#district").val("-1").change();
 		 $("#talukaId").val("-1").change();
