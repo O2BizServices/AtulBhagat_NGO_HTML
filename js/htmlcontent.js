@@ -20,6 +20,7 @@ var header = '<header class="main-header">'+
 			  '<li><a href="event.html">EVENTS</a></li>'+
               '<li><a href="gallery.html">GALLERY</a></li>'+
               '<li><a href="contact.html">CONTACT</a></li>'+
+			  '<li><a href="donate.html">DONATE</a></li>'+
 			  '<li><a href="about.html">ABOUT</a></li>'+
             '</ul>'+
           '</div>'+
