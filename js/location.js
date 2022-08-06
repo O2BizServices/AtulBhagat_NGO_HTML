@@ -85,3 +85,84 @@ postMap[3215]=map25;
 postMap[3220]=map26;
 postMap[3221]=map27;
 postMap[3217]=map28;
+
+
+function Education(type,degreeName,degreeShot) {
+	if(type == 'NA'){
+      this.type = type;
+      this.graduate = type;
+      this.postgraduate = type;
+	}else{
+	   this.type = type;
+	   if(degreeName.startsWith("CA ") || degreeName.startsWith("CS ")){ 
+			  this.graduate = degreeName;
+			  this.postgraduate = degreeName;
+		}else{
+			this.graduate = "B"+degreeShot+"-Bachelor in "+degreeName;
+			 this.postgraduate = "M"+degreeShot+"-Master in "+degreeName;
+		}
+	}
+      return this;
+}
+
+
+var eduList = new Array(
+new Education("Arts", "Business Administration", "BA"), 
+new Education("Arts", "Management Science", "MS"), 
+new Education("Arts", "Fine Arts", "FA"), 
+new Education("Arts", "Event Management", "EM"), 
+new Education("Arts", "Integrated Law Course", "A + LL.B"), 
+new Education("Arts", "Journalism and Mass Communication", "JMC"), 
+new Education("Arts", "Fashion Designing", "FD"), 
+new Education("Arts", "Social Work", "SW"), 
+new Education("Arts", "Business Studies", "BS"), 
+new Education("Arts", "Travel and Tourism Management", "TTM"), 
+new Education("Arts", "History", "A"), 
+new Education("Arts", "Hospitality and Hotel Administration", "HA"),
+new Education("Commerce", "Hospitality and Hotel Administration", ".Com"),
+new Education("Commerce", "Business Administration", "BA"),
+new Education("Commerce", "(Hons.) in Economics", ".Com"),
+new Education("Commerce", "Integarted Law Program", "BA LL.B"),
+new Education("Commerce", "Integrated Law Program", ".Com LL.B."),
+new Education("Commerce", "Hospitality and Hotel Administration", ".Com"),
+new Education("Commerce", "CA Chartered Accountancy", ".Com"),
+new Education("Commerce", "CS Company Secretary", ".Com"),
+new Education("Commerce", "Accessory Design, fashion Design, Ceramic Design, Leather Design, Graphic Design, Industrial Design, Jewellery Design", ".Com"),
+new Education("Commerce", "Foreign Language", ".Com"),
+
+new Education("Science", "Architecture", ".Arch"),
+new Education("Science", "Computer Applications", "CA"),
+new Education("Science", "Information Technology", ".Sc"),
+new Education("Science", "Computer Science", ".Sc"),
+new Education("Science", "Nursing", ".Sc"),
+new Education("Science", "Pharmacy", ".Pharma"),
+new Education("Science", "Interior Design", ".Sc"),
+new Education("Science", "Dental Surgery", "DS"),
+new Education("Science", "Animation, Graphics and Multimedia", ".Sc"),
+new Education("Science", "Nutrition & Dietetics", ".Sc"),
+new Education("Science", "Physiotherapy", "PT"),
+new Education("Science", "Applied Geology", ".Sc"),
+new Education("Science", "Physics", ".Sc"),
+new Education("Science", "Chemistry", ".Sc"),
+new Education("Science", "Mathematics", ".Sc"),
+new Education("Science", "Technology", "E/Tech"),
+new Education("Science", "Aeronautical Engineering", "E"),
+new Education("Science", "Automobile Engineering", "E"),
+new Education("Science", "Civil Engineering", "E"),
+new Education("Science", "Computer Science and Engineering", "E"),
+new Education("Science", "Biotechnology Engineering", "E"),
+new Education("Science", "Electrical and Electronics Engineering", "E"),
+new Education("Science", "Electronics and Communication Engineering", "E"),
+new Education("Science", "Automation and Robotics", "E"),
+new Education("Science", "Petroleum Engineering", "E"),
+new Education("Science", "Instrumentation Engineering", "E"),
+new Education("Science", "Ceramic Engineering", "E"),
+new Education("Science", "Chemical Engineering", "E"),
+new Education("Science", "Structural Engineering", "E"),
+new Education("Science", "Transportation Engineering", "E"),
+new Education("Science", "Construction Engineering", "E"),
+new Education("Science", "Power Engineering", "E"),
+new Education("Science", "Robotics Engineering", "E"),
+new Education("Science", "Textile Engineering", "E"),
+new Education("Science", "Smart Manufacturing & Automation", "E"),
+new Education("NA"));

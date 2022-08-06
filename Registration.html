@@ -143,7 +143,7 @@
 						<div class="input-group"style="width: 100%">
                             <label class="label">Education (शिक्षण)</label>
                             <div class="rs-select2 js-select-simple select--search">
-                                <select id="education" onchange="removeError1(this)">
+                                <select id="education" onchange="removeError1(this);checkeducation(this);checkspecial(this)">
                                     <option selected="selected" value="-1">Choose Education</option>
 									<option value="Below 10th">Below 10th</option>
 									<option value="10th">10th</option>
@@ -158,12 +158,21 @@
 						<div class="input-group"style="width: 100%">
                             <label class="label">Education Stream (शिक्षण प्रवाह)</label>
                             <div class="rs-select2 js-select-simple select--search">
-                                <select id="stream"  onchange="removeError1(this)">
+                                <select id="stream"  onchange="removeError1(this);checkspecial(this)">
                                     <option selected="selected" value="-1">Choose Stream</option>
 									<option value="Arts">Arts</option>
 									<option value="Commerce">Commerce</option>
 									<option value="Science">Science</option>
 									<option value="Other">Other</option>
+									<option value="Other">NA</option>
+                                </select>
+                                <div class="select-dropdown"></div>
+                            </div>
+                        </div>
+						<div class="input-group"style="width: 100%">
+                            <label class="label">Specialization (विशेषीकरण)</label>
+                            <div class="rs-select2 js-select-simple select--search">
+                                <select id="specilization"  onchange="removeError1(this)">
                                 </select>
                                 <div class="select-dropdown"></div>
                             </div>
@@ -309,6 +318,10 @@
 		addError($("#stream"));
 		return false;
 	  }
+	  if($("#specilization").val() == "-1"){
+		addError($("#specilization"));
+		return false;
+	  }
 	  if($("#yearofpass").val() == "-1"){
 		addError($("#yearofpass"));
 		return false;
@@ -338,6 +351,7 @@
 	  map["filecontent"]=filecontent;
 	  map["education"]=$("#education :selected").html();
 	  map["stream"]=$("#stream :selected").html();
+	  map["specilization"]=$("#specilization :selected").html();
 	  map["otherdetails"]=$("#otherdetails").val();
 	  map["yearOfPass"]=$("#yearofpass :selected").html();
 	  map["percentage"]=$("#percentage").val();
@@ -373,6 +387,29 @@
 	function removeError1(obj){
 		removeError($(obj));
 	}
+	function checkeducation(obj){
+		if(! ($(obj).val() == 'Graduation' || $(obj).val() == 'Post-Graduation')){
+			$("#stream").val("Other");
+			$("#specilization").val("NA");		
+		}	
+	}
+	
+	function checkspecial(obj2){
+		$('#specilization').empty();
+		$('#specilization').append($("<option></option>").attr("value", "-1").text("Choose Specialization")); 
+		eduList.forEach(function(obj) {
+			if(obj.type == $("#stream").val()){
+				if($("#education").val() == 'Graduation'){
+					$('#specilization').append($("<option></option>").attr("value", obj.graduate).text(obj.graduate)); 
+				}else if($("#education").val() == 'Post-Graduation'){
+					$('#specilization').append($("<option></option>").attr("value", obj.postgraduate).text(obj.postgraduate)); 
+				}
+			}
+		});		
+		if($('#specilization').length == 1){
+			$('#specilization').append($("<option></option>").attr("value", "NA").text("NA")); 
+		}
+	}
 	
 	function clearForm(){
 		 $("#first_name").val("");
@@ -388,6 +425,7 @@
 		 filecontent="";
 		 $("#education").val("-1").change();
 		 $("#stream").val("-1").change();
+		 $("#specilization").val("-1").change();
 	     $("#otherdetails").val("");
 	     $("#yearofpass").val("-1").change();
 	     $("#percentage").val("");
