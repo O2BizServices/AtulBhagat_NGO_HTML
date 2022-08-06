@@ -78,6 +78,7 @@
 							<th>Application No</th>
 							<th>Registration Date</th>
 							<th>Application Status</th>
+							<th>Status Comment</th>
 							<th>FullName</th>
 							<th>Mobile No</th>
 							<th>Gender</th>							
@@ -105,10 +106,23 @@
   <!-- Modal content -->
   <div class="modal-content">
     <span class="close">&times;</span>
-    <p>Change Status for Application No <span id="appno"></span></p>
-	<select id="selectStatus">		
-	</select>
-	<input type="button" class="btn-sm btn-primary" id="updateStatus" style="padding:0;width:100px" onclick="update()" value="Update" />
+	<div class="container">
+		<div class="row">
+			<label>Application No <span id="appno"></span></label>
+			<div class="form-group">
+				<label>Change Status</label>
+				<select id="selectStatus">		
+				</select>
+			</div>
+			<div class="form-group">
+				<label>Review Comment</label>
+				<input type="text" id="statusComment" style="border: 1px solid;width:auto" />
+			</div>
+			<div class="form-group">
+				<input type="button" class="btn-sm btn-primary" id="updateStatus" style="padding:0;width:100px" onclick="update()" value="Update" />
+			</div>
+		</div>
+	</div>
   </div>
 </div>
 	</div>
@@ -188,6 +202,7 @@
 	$("#updateStatus").hide();
 	map["mobileno"]=mobile;
 	map["status"]=$("#selectStatus").val();
+	map["statusComment"]=$("#statusComment").val();
 	$.ajax({
 		  type: 'POST',
 		  data:JSON.stringify(map),
@@ -213,6 +228,7 @@
 	function showModal(mobile,appNo){
 			$("#updateStatus").show();
 			$("#appno").html(appNo);
+			$("#statusComment").val("");
 			var modal = document.getElementById("myModal");
 			var updateStatus = document.getElementById("updateStatus");
 			updateStatus.onclick = function() {
@@ -249,7 +265,7 @@
 			var oldVal = statusMap[$(response).attr("appstatus")];
 			statusMap[$(response).attr("appstatus")] = oldVal + 1;
 		}
-			var newRow = "<tr><td>"+count+"</td><td><a href='javascript:void(0)' data-mobile='"+$(response).attr("mobileno")+"' data-docname='"+$(response).attr("attachDocName")+"' onclick='return downloadResume(this)'>"+$(response).attr("appNo")+"</a></td><td>"+$(response).attr("dateTime")+"</td><td>"+$(response).attr("appstatus")+openPopUp($(response).attr("mobileno"),"'"+$(response).attr("appNo")+"'")+"</td><td>"+$(response).attr("firstname")+" "+checkNull($(response).attr("middlename"))+" "+checkNull($(response).attr("lastname"))+"</td><td>"+$(response).attr("mobileno")+"</td>"+
+			var newRow = "<tr><td>"+count+"</td><td><a href='javascript:void(0)' data-mobile='"+$(response).attr("mobileno")+"' data-docname='"+$(response).attr("attachDocName")+"' onclick='return downloadResume(this)'>"+$(response).attr("appNo")+"</a></td><td>"+$(response).attr("dateTime")+"</td><td>"+$(response).attr("appstatus")+openPopUp($(response).attr("mobileno"),"'"+$(response).attr("appNo")+"'")+"</td><td>"+$(response).attr("statusComment")+"</td><td>"+$(response).attr("firstname")+" "+checkNull($(response).attr("middlename"))+" "+checkNull($(response).attr("lastname"))+"</td><td>"+$(response).attr("mobileno")+"</td>"+
 				"<td>"+$(response).attr("gender")+"</td><td>"+$(response).attr("district")+"</td><td>"+$(response).attr("taluka")+"</td><td>"+$(response).attr("post")+"</td><td>"+checkNull($(response).attr("village"))+"</td><td>"+$(response).attr("education")+"</td><td>"+$(response).attr("stream")+"</td><td>"+$(response).attr("specilization")+"</td><td>"+$(response).attr("yearOfPass")+"</td></td><td>"+$(response).attr("percentage")+"</td><td>"+checkNull($(response).attr("otherdetails"))+"</td>"+
 				'</tr>';
 			$("#custDetailsTable tbody").append(newRow);
