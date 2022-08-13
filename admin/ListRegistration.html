@@ -259,13 +259,18 @@
 		 $('#custDetailsTable').DataTable().destroy();
 		 $("#custDetailsTable tbody").empty();
 		$.each(response1, function(key,response) {	
-		if(statusMap[$(response).attr("appstatus")] == undefined){
-			statusMap[$(response).attr("appstatus")] = 1;
-		}else{
-			var oldVal = statusMap[$(response).attr("appstatus")];
-			statusMap[$(response).attr("appstatus")] = oldVal + 1;
-		}
-			var newRow = "<tr><td>"+count+"</td><td><a href='javascript:void(0)' data-mobile='"+$(response).attr("mobileno")+"' data-docname='"+$(response).attr("attachDocName")+"' onclick='return downloadResume(this)'>"+$(response).attr("appNo")+"</a></td><td>"+$(response).attr("dateTime")+"</td><td>"+$(response).attr("appstatus")+openPopUp($(response).attr("mobileno"),"'"+$(response).attr("appNo")+"'")+"</td><td>"+$(response).attr("statusComment")+"</td><td>"+$(response).attr("firstname")+" "+checkNull($(response).attr("middlename"))+" "+checkNull($(response).attr("lastname"))+"</td><td>"+$(response).attr("mobileno")+"</td>"+
+			if(statusMap[$(response).attr("appstatus")] == undefined){
+				statusMap[$(response).attr("appstatus")] = 1;
+			}else{
+				var oldVal = statusMap[$(response).attr("appstatus")];
+				statusMap[$(response).attr("appstatus")] = oldVal + 1;
+			}
+			var list = $(response).attr("statusComment").reverse();
+			var comments="";
+			$.each(list, function(key,response) {	
+				comments = comments + response+"\n";
+			});
+			var newRow = "<tr><td>"+count+"</td><td><a href='javascript:void(0)' data-mobile='"+$(response).attr("mobileno")+"' data-docname='"+$(response).attr("attachDocName")+"' onclick='return downloadResume(this)'>"+$(response).attr("appNo")+"</a></td><td>"+$(response).attr("dateTime")+"</td><td>"+$(response).attr("appstatus")+openPopUp($(response).attr("mobileno"),"'"+$(response).attr("appNo")+"'")+"</td><td style='white-space: pre;'>"+comments+"</td><td>"+$(response).attr("firstname")+" "+checkNull($(response).attr("middlename"))+" "+checkNull($(response).attr("lastname"))+"</td><td>"+$(response).attr("mobileno")+"</td>"+
 				"<td>"+$(response).attr("gender")+"</td><td>"+$(response).attr("district")+"</td><td>"+$(response).attr("taluka")+"</td><td>"+$(response).attr("post")+"</td><td>"+checkNull($(response).attr("village"))+"</td><td>"+$(response).attr("education")+"</td><td>"+$(response).attr("stream")+"</td><td>"+$(response).attr("specilization")+"</td><td>"+$(response).attr("yearOfPass")+"</td></td><td>"+$(response).attr("percentage")+"</td><td>"+checkNull($(response).attr("otherdetails"))+"</td>"+
 				'</tr>';
 			$("#custDetailsTable tbody").append(newRow);
